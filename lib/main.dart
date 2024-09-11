@@ -3,7 +3,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'view/splash_screen.dart';
 
 void main() async {
-  await dotenv.load();
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    print('Failed to load .env file: $e');
+  }
   runApp(MyApp());
 }
 
